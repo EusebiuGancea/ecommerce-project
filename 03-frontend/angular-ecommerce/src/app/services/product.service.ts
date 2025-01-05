@@ -15,6 +15,14 @@ export class ProductService {
 
   constructor(private httpClient: HttpClient) { }
 
+  getProduct(theProductId: number): Observable<Product> {
+    
+    // need to build URL based on product id
+    const productUrl = `${this.baseUrl}/${theProductId}`;
+
+    return this.httpClient.get<Product>(productUrl);
+  }
+  
   getProductList(theCategoryId: number): Observable<Product[]> {
 
     // @TODO: need to URL based on category id ... will come back to this!
